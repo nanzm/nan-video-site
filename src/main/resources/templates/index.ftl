@@ -19,10 +19,6 @@
 
         <div class="jumbotron bg-white">
             <h1 class="display-4">Hello, world! today is good!!!</h1>
-            <h1 class="display-4">Hello, world! today is good!!!</h1>
-            <h1 class="display-4">Hello, world! today is good!!!</h1>
-            <h1 class="display-4">Hello, world! today is good!!!</h1>
-            <h1 class="display-4">Hello, world! today is good!!!</h1>
             <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
                 attention
                 to
