@@ -12,5 +12,5 @@
         <p><b>信息：</b>${exception}</p>
     </div>
 
-    <#include "../includes/head.ftl">
+    <#include "../includes/foot.ftl">
 </@body>

@@ -1,4 +1,4 @@
-package cn.nancode.zm.core;
+package cn.nancode.zm.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,8 +24,9 @@ public class AuthFailedHandler extends SimpleUrlAuthenticationFailureHandler {
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception)
             throws IOException, ServletException {
 
-        logger.error("登录发生错误:" + exception);
+//        logger.error("登录发生错误:" + exception);
 
-        response.sendRedirect("/login?error=" + exception.getMessage());
+//        response.sendRedirect("/login");
+
     }
 }

@@ -7,11 +7,27 @@
     <#include "includes/msg.ftl">
 
     <form class="form-signin" action="/auth/form" method="post">
-        <h1 class="h3 mb-3 font-weight-normal">登录</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" name="username" id="inputEmail" class="form-control" placeholder="Email address" autofocus="">
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password">
+
+        <div class="form-group">
+            <h1 class="h3 mb-3 font-weight-normal">登录</h1>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="username" id="inputEmail" class="form-control" placeholder="请输入邮箱"
+                   autofocus="">
+        </div>
+
+        <div class="form-group">
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                <input type="text" class="form-control" placeholder="验证码" name="imageCode">
+            </div>
+            <div class="form-group col-md-4"><img src="/code/image" alt=""></div>
+        </div>
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
 

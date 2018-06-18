@@ -1,6 +1,12 @@
 package cn.nancode.zm.controller.api;
 
 
+import cn.nancode.zm.vo.Result;
+import cn.nancode.zm.vo.ResultUtil;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +20,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/user")
 public class UserController {
 
-    @GetMapping
-    public String index() {
-        return "index";
+//    @GetMapping("/me")
+//    public Object getCurrentUser() {
+//        return SecurityContextHolder.getContext().getAuthentication();
+//    }
+
+//    @GetMapping("/me")
+//    public Result getCurrentUser(Authentication authentication) {
+//        return ResultUtil.success(authentication);
+//    }
+
+    @GetMapping("/me")
+    public Result getCurrentUser(@AuthenticationPrincipal UserDetails user) {
+        return ResultUtil.success(user);
     }
+
 }

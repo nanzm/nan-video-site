@@ -1,13 +1,15 @@
-package cn.nancode.zm.core;
+package cn.nancode.zm.utils;
+
+import lombok.Data;
 
 import java.awt.image.BufferedImage;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
  * Created by nan
  * 2018/6/17
  */
+@Data
 public class ImageCode {
 
     private BufferedImage image;
@@ -22,6 +24,13 @@ public class ImageCode {
         this.expireTime = expireTime;
     }
 
-    public ImageCode() {
+    public ImageCode(BufferedImage image, String code, int expireIn) {
+        this.image = image;
+        this.code = code;
+        this.expireTime = LocalDateTime.now().plusSeconds(expireIn);
+    }
+
+    public boolean isExpried() {
+        return LocalDateTime.now().isAfter(expireTime);
     }
 }

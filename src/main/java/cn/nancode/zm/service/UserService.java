@@ -1,6 +1,6 @@
 package cn.nancode.zm.service;
 
-import cn.nancode.zm.dataobject.User;
+import cn.nancode.zm.dao.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

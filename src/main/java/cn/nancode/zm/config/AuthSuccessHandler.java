@@ -1,4 +1,4 @@
-package cn.nancode.zm.core;
+package cn.nancode.zm.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -31,9 +31,7 @@ public class AuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHa
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
 
-        logger.info("登录成功：" + authentication);
-
-        response.sendRedirect("/");
+        super.onAuthenticationSuccess(request, response, authentication);
     }
 
 }

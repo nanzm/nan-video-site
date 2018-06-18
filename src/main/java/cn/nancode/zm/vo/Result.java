@@ -1,4 +1,4 @@
-package cn.nancode.zm.VO;
+package cn.nancode.zm.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

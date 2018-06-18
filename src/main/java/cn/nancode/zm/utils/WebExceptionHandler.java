@@ -1,4 +1,4 @@
-package cn.nancode.zm.core;
+package cn.nancode.zm.utils;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ControllerAdvice;

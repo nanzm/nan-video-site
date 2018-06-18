@@ -1,7 +1,6 @@
-package cn.nancode.zm.VO;
+package cn.nancode.zm.vo;
 
 import cn.nancode.zm.enums.ResultEnum;
-import cn.nancode.zm.VO.Result;
 
 /**
  *

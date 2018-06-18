@@ -13,5 +13,5 @@
          <p><b>信息：</b>${message}</p>
      </div>
 
-    <#include "../includes/head.ftl">
+    <#include "../includes/foot.ftl">
 </@body>

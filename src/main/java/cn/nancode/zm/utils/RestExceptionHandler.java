@@ -1,11 +1,11 @@
-package cn.nancode.zm.core;
+package cn.nancode.zm.utils;
 
-import cn.nancode.zm.VO.Result;
-import cn.nancode.zm.VO.ResultUtil;
+import cn.nancode.zm.vo.Result;
+import cn.nancode.zm.vo.ResultUtil;
 import cn.nancode.zm.enums.ResultEnum;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by nan
  * 2018/6/17
  */
-@ControllerAdvice
+@RestControllerAdvice
 public class RestExceptionHandler {
 
 
