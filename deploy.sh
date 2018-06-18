@@ -21,7 +21,7 @@ killpid()
 
 # 打包
 cd $PROJ_PATH/nancode
-mvn clean package
+mvn clean package -Dmaven.test.skip=true
 
 
 # 停掉服务
@@ -35,5 +35,5 @@ echo `ls`
 echo "启动应用..."
 
 # 启动
-nohup java -Dserver.port=8090 -jar --spring.profiles.active=prod nancode.jar > nancode.log &
+nohup java -jar -Dserver.port=8090 -Dspring.profiles.active=prod nancode.jar > nancode.log &
 echo "nancode startup ok"
