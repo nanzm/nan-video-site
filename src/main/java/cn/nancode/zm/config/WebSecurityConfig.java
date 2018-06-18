@@ -45,18 +45,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/", "/login", "/register").permitAll()
-                .antMatchers("/css/**", "/js/**", "/images/**", "favicon.ico").permitAll()
+                .antMatchers("/css/**", "/js/**", "/images/**", "/favicon.ico").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
                 .csrf().disable();
     }
-
-
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("nan").password("123").roles("ADMIN");
-//    }
-
 }

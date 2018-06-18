@@ -35,5 +35,5 @@ echo `ls`
 echo "启动应用..."
 
 # 启动
-nohup java -Dserver.port=8090 -jar nancode.jar > nancode.log &
+nohup java -Dserver.port=8090 -jar --spring.profiles.active=prod nancode.jar > nancode.log &
 echo "nancode startup ok"
