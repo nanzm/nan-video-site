@@ -58,3 +58,8 @@ body{
 .form-signin input{
     margin-bottom: 10px;
 }
+
+
+.alert{
+    text-align: center;
+}

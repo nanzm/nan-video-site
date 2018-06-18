@@ -23,7 +23,7 @@ import java.util.List;
  * Description:
  */
 @Service
-public class UserServiceImpl implements UserService,UserDetailsService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     private Logger logger = LoggerFactory.getLogger((getClass()));
 
@@ -79,7 +79,12 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 
         //邮箱作为 用户名
         User user = getUserByEmail(username);
-        return user;
+
+        if (user != null) {
+            return user;
+        } else {
+            throw new UsernameNotFoundException("账号名错误");
+        }
     }
 
     @Override

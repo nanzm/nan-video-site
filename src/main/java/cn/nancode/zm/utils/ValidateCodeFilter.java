@@ -29,13 +29,14 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if (StringUtils.equals("/auth/form", request.getRequestURL())
-                && StringUtils.equalsIgnoreCase(request.getMethod(), "post")) {
 
+        if (StringUtils.equals("/auth/form", request.getRequestURI())
+                && StringUtils.equalsIgnoreCase(request.getMethod(), "post")) {
             try {
                 validate(new ServletWebRequest(request));
             } catch (ValidateCodeException e) {
                 authenticationFailureHandler.onAuthenticationFailure(request, response, e);
+                return;
             }
         }
 
@@ -72,5 +73,21 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
         }
 
         sessionStrategy.removeAttribute(request, ValidateCodeController.SESSION_KEY);
+    }
+
+    public AuthenticationFailureHandler getAuthenticationFailureHandler() {
+        return authenticationFailureHandler;
+    }
+
+    public void setAuthenticationFailureHandler(AuthenticationFailureHandler authenticationFailureHandler) {
+        this.authenticationFailureHandler = authenticationFailureHandler;
+    }
+
+    public SessionStrategy getSessionStrategy() {
+        return sessionStrategy;
+    }
+
+    public void setSessionStrategy(SessionStrategy sessionStrategy) {
+        this.sessionStrategy = sessionStrategy;
     }
 }

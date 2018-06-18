@@ -1,4 +1,4 @@
-package cn.nancode.zm.vo;
+package cn.nancode.zm.utils;
 
 import cn.nancode.zm.enums.ResultEnum;
 
@@ -31,6 +31,14 @@ public class ResultUtil {
         Result result = new Result();
         result.setCode(code);
         result.setMsg(msg);
+        return result;
+    }
+
+    public static Result error(Integer code, Object data) {
+        Result result = new Result();
+        result.setCode(code);
+        result.setMsg("发生了错误");
+        result.setData(data);
         return result;
     }
 }

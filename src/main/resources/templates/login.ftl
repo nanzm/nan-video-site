@@ -6,6 +6,12 @@
     <#include "includes/head.ftl">
     <#include "includes/msg.ftl">
 
+
+    <#if SPRING_SECURITY_LAST_EXCEPTION?exists>
+        <div class="alert alert-danger" role="alert">${SPRING_SECURITY_LAST_EXCEPTION.message}</div>
+    </#if>
+
+
     <form class="form-signin" action="/auth/form" method="post">
 
         <div class="form-group">
@@ -23,7 +29,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-8">
-                <input type="text" class="form-control" placeholder="验证码" name="imageCode">
+                <input type="text" name="imageCode" class="form-control" placeholder="验证码" >
             </div>
             <div class="form-group col-md-4"><img src="/code/image" alt=""></div>
         </div>

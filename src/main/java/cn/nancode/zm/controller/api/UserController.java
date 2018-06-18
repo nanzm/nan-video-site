@@ -1,11 +1,9 @@
 package cn.nancode.zm.controller.api;
 
 
-import cn.nancode.zm.vo.Result;
-import cn.nancode.zm.vo.ResultUtil;
-import org.springframework.security.core.Authentication;
+import cn.nancode.zm.utils.Result;
+import cn.nancode.zm.utils.ResultUtil;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

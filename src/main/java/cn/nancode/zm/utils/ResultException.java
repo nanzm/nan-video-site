@@ -1,4 +1,4 @@
-package cn.nancode.zm.vo;
+package cn.nancode.zm.utils;
 
 import cn.nancode.zm.enums.ResultEnum;
 

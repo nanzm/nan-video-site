@@ -1,7 +1,12 @@
 package cn.nancode.zm.config;
 
+import cn.nancode.zm.enums.ResultEnum;
+import cn.nancode.zm.utils.ResultUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
@@ -20,13 +25,22 @@ public class AuthFailedHandler extends SimpleUrlAuthenticationFailureHandler {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception)
             throws IOException, ServletException {
 
-//        logger.error("登录发生错误:" + exception);
+        if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
 
-//        response.sendRedirect("/login");
-
+            response.setStatus(HttpStatus.UNAUTHORIZED.value());
+            response.setContentType("application/json;charset=UTF-8");
+            response.getWriter().write(objectMapper.writeValueAsString(
+                    ResultUtil.error(ResultEnum.SERVER_ERROR.getCode(), exception.getMessage())));
+        } else {
+            this.setDefaultFailureUrl("/login");
+            super.onAuthenticationFailure(request, response, exception);
+        }
     }
 }

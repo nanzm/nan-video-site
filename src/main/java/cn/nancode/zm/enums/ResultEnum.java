@@ -11,6 +11,7 @@ public enum ResultEnum {
     UN_LOGIN(5, "未登录"),
     ARGUMENT(6, "参数错误"),
     NODATA(7, "无数据"),
+    AUTH_ERROR(9, "用户名或密码错误"),
     SERVER_ERROR(500, "服务器错误"),
 
     PRIMARY_SCHOOL(99, "你可能再上小学"),

@@ -1,9 +1,6 @@
 package cn.nancode.zm.utils;
 
-import cn.nancode.zm.vo.Result;
-import cn.nancode.zm.vo.ResultUtil;
 import cn.nancode.zm.enums.ResultEnum;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 

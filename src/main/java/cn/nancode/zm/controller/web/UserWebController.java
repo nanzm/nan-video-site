@@ -5,8 +5,11 @@ import cn.nancode.zm.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -28,6 +31,13 @@ public class UserWebController {
     @GetMapping("/login")
     public String login() {
         return "login";
+    }
+
+    @GetMapping("/info")
+    public String info(@AuthenticationPrincipal UserDetails user, ModelMap map) {
+        System.out.println(user);
+        map.addAttribute("userInfo", user);
+        return "info";
     }
 
     @GetMapping("/register")
