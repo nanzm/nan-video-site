@@ -8,10 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping(value = "/api/upload")
@@ -25,15 +22,10 @@ public class QiniuController {
 
 
     @GetMapping("/token")
-    public Result uploadToken(@RequestParam(value = "key") String key) {
+    public Result uploadToken() {
 
-        logger.info("key：" + key);
-        if (key == null) {
-            key = LocalDateTime.now().toString();
-        }
-        
         Auth auth = Auth.create(accessKey, secretKey);
-        String upToken = auth.uploadToken(bucket, key);
+        String upToken = auth.uploadToken(bucket);
 
         return ResultUtil.success(new UploadToken(upToken));
     }
