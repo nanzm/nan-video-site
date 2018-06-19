@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NanVideoSiteApplication {
+public class NanSiteApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NanVideoSiteApplication.class, args);
+		SpringApplication.run(NanSiteApplication.class, args);
 	}
 }

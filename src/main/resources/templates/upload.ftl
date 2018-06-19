@@ -17,8 +17,11 @@
             }
         });
 
-        function upload(file, key) {
-            var putExtra = {fname: "", params: {}, mimeType: null};
+        function uploadItem(files) {
+            var file = files[0];
+            var key = files[0].name;
+
+            var putExtra = {fname: "", params: {}, mimeType: ['video/x-ms-wmv', 'video/x-flv', 'video/mp4']};
             var observable = qiniu.upload(file, key, token, putExtra, {});
 
             var subscription = observable.subscribe({
@@ -37,8 +40,7 @@
 
 
         $("#video").on('change', function (e) {
-            var file = this.files[0];
-            upload(file, "mimimi");
+            uploadItem(this.files)
         });
 
     })
