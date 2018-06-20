@@ -45,6 +45,10 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 50, unique = true)
     private String email;
 
+    @Size(max = 20)
+    @Column(nullable = false, length = 20, unique = true)
+    private String phone;
+
     @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinTable(name = "user_authority", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
@@ -54,10 +58,12 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String name, String email, String password) {
+    public User(String name, String password, String email, String phone, List<Authority> authorities) {
         this.name = name;
-        this.email = email;
         this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.authorities = authorities;
     }
 
     @Override
