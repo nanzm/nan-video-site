@@ -1,6 +1,7 @@
 package cn.nancode.zm.dao;
 
 
+import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity // 实体
+@Data
 public class Comment implements Serializable {
 
     @Id // 主键

@@ -1,0 +1,8 @@
+package cn.nancode.zm.repository;
+
+import cn.nancode.zm.dao.Vote;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface VoteRepository extends JpaRepository<Vote, Long> {
+
+}

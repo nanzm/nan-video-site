@@ -1,14 +1,15 @@
 package cn.nancode.zm.dao;
 
 
+import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity // 实体
+@Data
 public class Catalog {
-
 
     @Id // 主键
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 自增长策略

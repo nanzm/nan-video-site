@@ -1,6 +1,5 @@
 package cn.nancode.zm.dao;
 
-import com.sun.org.apache.xml.internal.resolver.Catalog;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -22,6 +21,11 @@ public class Blog {
     @Size(min=2, max=50)
     @Column(nullable = false, length = 50) // 映射为字段，值不能为空
     private String title;
+
+    @NotEmpty(message = "视频链接地址")
+    @Size(min=10, max=500)
+    @Column(nullable = false, length = 50) // 映射为字段，值不能为空
+    private String video;
 
     @NotEmpty(message = "摘要不能为空")
     @Size(min=2, max=300)
@@ -76,4 +80,69 @@ public class Blog {
     @JoinColumn(name="catalog_id")
     private Catalog catalog;
 
+
+    /**
+     * 添加评论
+     */
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+        this.commentSize = this.comments.size();
+    }
+
+    /**
+     * 删除评论
+     */
+    public void removeComment(Long commentId) {
+        for (int index=0; index < this.comments.size(); index ++ ) {
+            if (comments.get(index).getId() == commentId) {
+                this.comments.remove(index);
+                break;
+            }
+        }
+
+        this.commentSize = this.comments.size();
+    }
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
+        this.voteSize = this.votes.size();
+    }
+
+    /**
+     * 点赞
+     */
+    public boolean addVote(Vote vote) {
+        boolean isExist = false;
+        // 判断重复
+        for (int index=0; index < this.votes.size(); index ++ ) {
+            if (this.votes.get(index).getUser().getId() == vote.getUser().getId()) {
+                isExist = true;
+                break;
+            }
+        }
+
+        if (!isExist) {
+            this.votes.add(vote);
+            this.voteSize = this.votes.size();
+        }
+
+        return isExist;
+    }
+    /**
+     * 取消点赞
+     */
+    public void removeVote(Long voteId) {
+        for (int index=0; index < this.votes.size(); index ++ ) {
+            if (this.votes.get(index).getId() == voteId) {
+                this.votes.remove(index);
+                break;
+            }
+        }
+
+        this.voteSize = this.votes.size();
+    }
 }
