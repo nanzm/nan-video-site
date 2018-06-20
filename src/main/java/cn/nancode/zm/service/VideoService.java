@@ -13,5 +13,5 @@ public interface VideoService {
 
     Video getVideoById(Long id);
 
-    List<Video> listVideos(Pageable pageable);
+    List<Video> listVideos();
 }

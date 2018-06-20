@@ -27,6 +27,10 @@
     <link rel="shortcut icon" href="/favicon.ico"/>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/common.css" rel="stylesheet">
+
+    <#--<link href="https://cdn.bootcss.com/semantic-ui/2.3.1/semantic.min.css" rel="stylesheet">-->
+    <#--<script src="https://cdn.bootcss.com/semantic-ui/2.3.1/semantic.min.js"></script>-->
+
     ${layout_head!}
 </head>
 <body>

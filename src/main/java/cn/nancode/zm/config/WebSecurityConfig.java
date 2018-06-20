@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-  
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -56,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/", "/login", "/code/image", "/register").permitAll()
-                .antMatchers("/test").permitAll()
+                .antMatchers("/test", "/video/**", "/api/upload/token").permitAll()
                 .antMatchers("/css/**", "/js/**", "/images/**", "/lib/**", "/favicon.ico").permitAll()
                 .anyRequest()
                 .authenticated()

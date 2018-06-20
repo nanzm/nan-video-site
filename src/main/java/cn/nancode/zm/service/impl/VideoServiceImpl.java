@@ -4,10 +4,11 @@ import cn.nancode.zm.dao.Video;
 import cn.nancode.zm.repository.VideoRepository;
 import cn.nancode.zm.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class VideoServiceImpl implements VideoService {
 
     @Autowired
@@ -29,7 +30,7 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public List<Video> listVideos(Pageable pageable) {
-        return (List<Video>) videoRepository.findAll(pageable);
+    public List<Video> listVideos() {
+        return videoRepository.findAll();
     }
 }

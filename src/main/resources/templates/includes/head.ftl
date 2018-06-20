@@ -11,7 +11,7 @@
                 <a class="nav-link" href="/">主页 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/videos">视频</a>
+                <a class="nav-link" href="/video">视频</a>
             </li>
         </ul>
 
