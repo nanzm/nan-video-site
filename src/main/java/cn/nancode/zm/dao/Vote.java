@@ -23,4 +23,11 @@ public class Vote implements Serializable {
     @Column(nullable = false)
     @CreationTimestamp  // 由数据库自动创建时间
     private Timestamp createTime;
+
+    public Vote() {
+    }
+
+    public Vote(User user) {
+        this.user = user;
+    }
 }

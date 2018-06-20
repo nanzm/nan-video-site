@@ -6,8 +6,6 @@ import cn.nancode.zm.dao.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.Optional;
-
 public interface BlogService {
 
     //保存Blog
@@ -22,6 +20,7 @@ public interface BlogService {
 
     Page<Blog> listBlogsByTitleVoteAndSort(User user, String title, Pageable pageable);
 
+    //阅读量递增
     void readingIncrease(Long id);
 
     Blog createComment(Long blogId, String commentContent);

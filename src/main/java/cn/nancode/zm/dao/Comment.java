@@ -2,6 +2,7 @@ package cn.nancode.zm.dao;
 
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -27,6 +28,14 @@ public class Comment implements Serializable {
     private User user;
 
     @Column(nullable = false) // 映射为字段，值不能为空
-    @org.hibernate.annotations.CreationTimestamp  // 由数据库自动创建时间
+    @CreationTimestamp  // 由数据库自动创建时间
     private Timestamp createTime;
+
+    public Comment() {
+    }
+
+    public Comment(String content, User user) {
+        this.content = content;
+        this.user = user;
+    }
 }
