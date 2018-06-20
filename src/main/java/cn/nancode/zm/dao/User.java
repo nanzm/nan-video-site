@@ -46,7 +46,7 @@ public class User implements UserDetails {
     private String email;
 
     @Size(max = 20)
-    @Column(nullable = false, length = 20, unique = true)
+    @Column(length = 20, unique = true)
     private String phone;
 
     @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)

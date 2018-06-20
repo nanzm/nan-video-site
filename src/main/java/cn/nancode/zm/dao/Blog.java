@@ -80,6 +80,25 @@ public class Blog {
     @JoinColumn(name="catalog_id")
     private Catalog catalog;
 
+    public Blog() {
+    }
+
+    public Blog(String title, String video, String summary, String content, String htmlContent, User user,
+                Integer readSize, Integer commentSize, Integer voteSize, String tags, List<Comment> comments, List<Vote> votes, Catalog catalog) {
+        this.title = title;
+        this.video = video;
+        this.summary = summary;
+        this.content = content;
+        this.htmlContent = htmlContent;
+        this.user = user;
+        this.readSize = readSize;
+        this.commentSize = commentSize;
+        this.voteSize = voteSize;
+        this.tags = tags;
+        this.comments = comments;
+        this.votes = votes;
+        this.catalog = catalog;
+    }
 
     /**
      * 添加评论
