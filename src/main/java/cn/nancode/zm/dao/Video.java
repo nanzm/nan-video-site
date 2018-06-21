@@ -28,6 +28,8 @@ public class Video {
     @Column(nullable = false, length = 50, unique = true)
     private String url;
 
+
+
     public Video() {
     }
 
