@@ -25,7 +25,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="/favicon.ico"/>
+
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/lib/ui/semantic.min.css" rel="stylesheet">
+
     <link href="/css/common.css" rel="stylesheet">
 
     <#--<link href="https://cdn.bootcss.com/semantic-ui/2.3.1/semantic.min.css" rel="stylesheet">-->
@@ -37,6 +41,8 @@
     <#nested />
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+<script src="/lib/ui/semantic.min.js"></script>
+
 <script src="/js/common.js"></script>
     ${layout_js!}
 </body>

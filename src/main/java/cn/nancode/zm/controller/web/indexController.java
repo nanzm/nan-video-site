@@ -19,7 +19,7 @@ public class indexController {
     public String index() {
 
         logger.error("首页错误哦 哦哦哦哦哦哦哦哦哦哦");
-        
+
         return "index";
     }
 }

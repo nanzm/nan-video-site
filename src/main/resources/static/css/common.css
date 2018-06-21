@@ -1,8 +1,9 @@
-html,body{
+html, body {
     min-height: 100vh;
+    height: auto !important;
 }
 
-body{
+body {
     position: relative;
     padding-bottom: 100px;
 }
@@ -31,7 +32,7 @@ body{
 
 }
 
-.navbar{
+.navbar {
     margin-bottom: 5px;
 }
 
@@ -44,22 +45,19 @@ body{
     background-color: #f5f5f5;
 }
 
-
-
 /*login*/
 
-.form-signin{
+.form-signin {
     width: 100%;
     max-width: 330px;
     padding: 15px;
     margin: 8rem auto 0;
 }
 
-.form-signin input{
+.form-signin input {
     margin-bottom: 10px;
 }
 
-
-.alert{
+.alert {
     text-align: center;
 }
