@@ -29,7 +29,7 @@
 
     <link href="/css/bs.min.css" rel="stylesheet">
 
-    <link href="/lib/ui/sm.min.css" rel="stylesheet">
+    <link href="/lib/sm/sm.min.css" rel="stylesheet">
 
     <link href="/css/common.css" rel="stylesheet">
 
@@ -39,7 +39,7 @@
     <#nested />
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bs.min.js"></script>
-<script src="/lib/ui/sm.min.js"></script>
+<script src="/lib/sm/sm.min.js"></script>
 
 <script src="/js/common.js"></script>
     ${layout_js!}
