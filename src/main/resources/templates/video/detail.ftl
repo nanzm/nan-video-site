@@ -22,7 +22,6 @@
             autoplay: true,
             video: {
                 url: url,
-                // url: 'http://cloud.nancode.cn/cookie-session.flv',
             },
             contextmenu: [{
                 text: 'Video info',

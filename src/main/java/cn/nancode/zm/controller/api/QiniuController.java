@@ -18,7 +18,8 @@ public class QiniuController {
 
     private String accessKey = "MIL4HzWtznF-NTISen0enoP7l2MKIbCSB2ID9ugn";
     private String secretKey = "LEPHxmBs05GVwcjPk527OgSNsI_7Rd_4LayKTn0E";
-    private String bucket = "cloud";
+    private String bucket = "cdn-block1";
+//    private String bucket = "cloud";
 
     @GetMapping("/token")
     public Result uploadToken() {
