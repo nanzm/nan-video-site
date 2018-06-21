@@ -35,5 +35,6 @@ echo `ls`
 echo "> > > > > > > > > > > > > > > > > 启动应用..."
 
 # 启动
+# https://ff095de64975450b9f96368415684eed@sentry.io/1228246
 nohup java -jar -Dsentry.dsn=https://ff095de64975450b9f96368415684eed@sentry.io/1228246 -Dserver.port=8090 -Dspring.profiles.active=prod nancode.jar > /dev/null 2>&1 &
 echo "nancode startup ok"
