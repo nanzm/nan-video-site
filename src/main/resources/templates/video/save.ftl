@@ -45,7 +45,7 @@
                     if (res.key) {
                         $("#info").html("上传成功");
 
-                        $("#videoVal").val("//cloud.nancode.cn/" + res.key)
+                        $("#videoVal").val("http://cloud.nancode.cn/" + res.key)
                     } else {
                         alert("上传失败")
                     }
