@@ -22,8 +22,8 @@
 
         function uploadItem(files) {
             var file = files[0];
-            // var key = files[0].name;
-            var key = moment().format();
+            var name = files[0].name;
+            var key = Date.now() + "." + getFileExtension(name);
 
             var putExtra = {fname: "", params: {}, mimeType: null};
             // ['video/x-ms-wmv', 'video/x-flv', 'video/mp4']
@@ -57,6 +57,7 @@
 
         $("#video").on('change', function (e) {
             uploadItem(this.files)
+            // console.log(this.files);
         });
 
 
@@ -77,7 +78,6 @@
             <div class="form-group">
                 <input type="text" name="name" class="form-control" id="videoName" placeholder="">
             </div>
-
 
             <div class="form-group">
                 <input type="file" id="video" placeholder="上传">

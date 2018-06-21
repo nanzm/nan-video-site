@@ -29,22 +29,15 @@ public class VideoController {
 
     @GetMapping
     public String list(Pageable pageable, Model model) {
-
         List<Video> list = videoService.listVideos();
-
         model.addAttribute("list", list);
-
-        System.out.println(list);
         return "video/list";
     }
 
     @GetMapping("/play/{id}")
     public String play(@PathVariable("id") long id, Model model) {
-        System.out.println(id);
-
         Video video = videoService.getVideoById(id);
         model.addAttribute("video", video);
-
         return "video/detail";
     }
 
@@ -55,7 +48,6 @@ public class VideoController {
 
     @PostMapping("/save/form")
     public String saveForm(Video video) {
-        System.out.println(video);
         videoService.saveVideo(video);
         return "redirect:/video";
     }
