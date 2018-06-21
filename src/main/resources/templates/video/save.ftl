@@ -9,17 +9,14 @@
 <@js>
 <script src="https://cdn.bootcss.com/moment.js/2.22.1/moment.min.js"></script>
 <script>
-
     $(function () {
         var token;
-
         $.get("/api/upload/token", function (res) {
             console.log(res);
             if (res.code == 0) {
                 token = res.data.token;
             }
         });
-
         function uploadItem(files) {
             var file = files[0];
             var name = files[0].name;
@@ -28,7 +25,6 @@
             var putExtra = {fname: "", params: {}, mimeType: null};
             // ['video/x-ms-wmv', 'video/x-flv', 'video/mp4']
             var observable = qiniu.upload(file, key, token, putExtra, {});
-
 
             $("#info").removeClass("d-none");
 
@@ -53,24 +49,17 @@
             });
             // subscription.unsubscribe() // 上传取消
         }
-
-
         $("#video").on('change', function (e) {
             uploadItem(this.files)
             // console.log(this.files);
         });
-
-
     })
 </script>
 </@js>
 
-
-
 <@body>
     <#include "../includes/head.ftl">
     <div id="info" class="d-none alert alert-success" role="alert"></div>
-
     <div class="container" style="padding: 100px 100px;">
         <h1>添加视频</h1>
 
@@ -89,7 +78,5 @@
             </div>
         </form>
     </div>
-
-
     <#include "../includes/foot.ftl">
 </@body>
