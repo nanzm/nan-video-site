@@ -8,63 +8,66 @@ import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.util.List;
 
-// blog实体
+/**
+ *
+ * @author sufun
+ */
 @Entity
 @Data
 public class Blog {
 
     @Id // 主键
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 自增长策略
-    private Long id; // 用户的唯一标识
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotEmpty(message = "标题不能为空")
     @Size(min=2, max=50)
-    @Column(nullable = false, length = 50) // 映射为字段，值不能为空
+    @Column(nullable = false, length = 50)
     private String title;
 
     @NotEmpty(message = "视频链接地址")
     @Size(min=10, max=500)
-    @Column(nullable = false, length = 50) // 映射为字段，值不能为空
+    @Column(nullable = false, length = 50)
     private String video;
 
     @NotEmpty(message = "摘要不能为空")
     @Size(min=2, max=300)
-    @Column(nullable = false) // 映射为字段，值不能为空
+    @Column(nullable = false)
     private String summary;
 
     @Lob  // 大对象，映射 MySQL 的 Long Text 类型
     @Basic(fetch=FetchType.LAZY) // 懒加载
     @NotEmpty(message = "内容不能为空")
     @Size(min=2)
-    @Column(nullable = false) // 映射为字段，值不能为空
+    @Column(nullable = false)
     private String content;
 
     @Lob  // 大对象，映射 MySQL 的 Long Text 类型
     @Basic(fetch=FetchType.LAZY) // 懒加载
     @NotEmpty(message = "内容不能为空")
     @Size(min=2)
-    @Column(nullable = false) // 映射为字段，值不能为空
-    private String htmlContent; // 将 md 转为 html
+    @Column(nullable = false)
+    private String htmlContent;
 
     @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
 
     @Column(nullable = false) // 映射为字段，值不能为空
-    @org.hibernate.annotations.CreationTimestamp  // 由数据库自动创建时间
+    @org.hibernate.annotations.CreationTimestamp
     private Timestamp createTime;
 
     @Column(name="readSize")
-    private Integer readSize = 0; // 访问量、阅读量
+    private Integer readSize = 0;
 
     @Column(name="commentSize")
-    private Integer commentSize = 0;  // 评论量
+    private Integer commentSize = 0;
 
     @Column(name="voteSize")
-    private Integer voteSize = 0;  // 点赞量
+    private Integer voteSize = 0;
 
     @Column(name="tags", length = 100)
-    private String tags;  // 标签
+    private String tags;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "blog_comment", joinColumns = @JoinColumn(name = "blog_id", referencedColumnName = "id"),

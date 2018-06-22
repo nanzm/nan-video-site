@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
+/**
+ * @author sufun
+ */
 @Entity
 @Data
 public class Video {

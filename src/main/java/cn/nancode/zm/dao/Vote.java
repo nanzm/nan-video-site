@@ -7,12 +7,15 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-// 实体
+
+/**
+ * @author sufun
+ */
 @Entity
 @Data
 public class Vote implements Serializable {
 
-    @Id // 主键
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -21,7 +24,7 @@ public class Vote implements Serializable {
     private User user;
 
     @Column(nullable = false)
-    @CreationTimestamp  // 由数据库自动创建时间
+    @CreationTimestamp
     private Timestamp createTime;
 
     public Vote() {

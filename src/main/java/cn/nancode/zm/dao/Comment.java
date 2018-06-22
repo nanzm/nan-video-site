@@ -10,25 +10,28 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-@Entity // 实体
+/**
+ * @author sufun
+ */
+@Entity
 @Data
 public class Comment implements Serializable {
 
-    @Id // 主键
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 自增长策略
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotEmpty(message = "评论内容不能为空")
     @Size(min = 2, max = 500)
-    @Column(nullable = false) // 映射为字段，值不能为空
+    @Column(nullable = false)
     private String content;
 
     @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(nullable = false) // 映射为字段，值不能为空
-    @CreationTimestamp  // 由数据库自动创建时间
+    @Column(nullable = false)
+    @CreationTimestamp
     private Timestamp createTime;
 
     public Comment() {

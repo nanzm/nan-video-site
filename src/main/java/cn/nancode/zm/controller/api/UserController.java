@@ -9,24 +9,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 /**
- * User: nan-computer
- * Date: 2018/6/3 19:02
- * Description:
+ * @author sufun
  */
 @RestController
 @RequestMapping(value = "/api/user")
 public class UserController {
 
-//    @GetMapping("/me")
-//    public Object getCurrentUser() {
-//        return SecurityContextHolder.getContext().getAuthentication();
-//    }
+    //    @GetMapping("/me")
+    //    public Object getCurrentUser() {
+    //        return SecurityContextHolder.getContext().getAuthentication();
+    //    }
 
-//    @GetMapping("/me")
-//    public Result getCurrentUser(Authentication authentication) {
-//        return ResultUtil.success(authentication);
-//    }
+    //    @GetMapping("/me")
+    //    public Result getCurrentUser(Authentication authentication) {
+    //        return ResultUtil.success(authentication);
+    //    }
 
     @GetMapping("/me")
     public Result getCurrentUser(@AuthenticationPrincipal UserDetails user) {

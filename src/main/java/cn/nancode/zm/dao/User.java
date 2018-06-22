@@ -25,7 +25,7 @@ import java.util.List;
 @Data
 public class User implements UserDetails {
 
-    @Id // 主键
+    @Id
     @GeneratedValue
     private Long id;
 
