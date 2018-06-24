@@ -18,10 +18,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import java.util.Locale;
 
+
 /**
- * User: nan-computer
- * Date: 2018/6/3 17:49
- * Description:
+ * @author nan
  */
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -56,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/", "/login", "/code/image", "/register").permitAll()
-                .antMatchers("/test", "/video", "/video/play/**", "/api/upload/token").permitAll()
+                .antMatchers("/test", "/video", "/video/play/**", "/api/**").permitAll()
                 .antMatchers("/css/**", "/js/**", "/images/**", "/lib/**", "/favicon.ico").permitAll()
                 .anyRequest()
                 .authenticated()

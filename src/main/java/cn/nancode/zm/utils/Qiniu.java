@@ -11,16 +11,23 @@ import org.slf4j.LoggerFactory;
  */
 public class Qiniu {
 
-    private final String accessKey = "MIL4HzWtznF-NTISen0enoP7l2MKIbCSB2ID9ugn";
-    private final String secretKey = "LEPHxmBs05GVwcjPk527OgSNsI_7Rd_4LayKTn0E";
-    private final String bucketDefault = "cdn-block1";
+    private static String accessKey = "MIL4HzWtznF-NTISen0enoP7l2MKIbCSB2ID9ugn";
+    private static String secretKey = "LEPHxmBs05GVwcjPk527OgSNsI_7Rd_4LayKTn0E";
+    private static String bucketDefault = "cdn-block1";
 
     private Logger logger = LoggerFactory.getLogger((getClass()));
 
 
-    public String getUpToken() {
+    public static Auth getAuth() {
         Auth auth = Auth.create(accessKey, secretKey);
+        return auth;
+    }
+
+    public static String getUpToken() {
+        Auth auth = getAuth();
         String upToken = auth.uploadToken(bucketDefault);
         return upToken;
     }
+
+
 }
