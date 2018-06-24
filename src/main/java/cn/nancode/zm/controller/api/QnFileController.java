@@ -12,12 +12,16 @@ import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.model.FetchRet;
 import com.qiniu.storage.model.FileListing;
-import com.qiniu.util.Auth;
-import com.qiniu.util.StringUtils;
-import com.qiniu.util.UrlSafeBase64;
+import com.qiniu.util.*;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Map;
 
 /**
  * @author nan
@@ -26,6 +30,16 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping(value = "/api/")
 public class QnFileController {
+
+
+    /**
+     * 数据处理完成结果通知地址
+     */
+    private String persistentNotifyUrl = "http://www.nancode.cn/api/qn/notify";
+    /**
+     * 数据处理队列名称，必须
+     */
+    private String persistentPipeline = "tomp4";
 
     /**
      * 默认 bucket
@@ -87,26 +101,21 @@ public class QnFileController {
     public Result trans(@RequestParam(value = "key") String key) {
 
         //数据处理指令，支持多个指令
-        String saveMp4Entry = String.format("%s:avthumb_test_target.mp4", bucket);
-        String avthumbMp4Fop = String.format("avthumb/mp4|saveas/%s", UrlSafeBase64.encodeToString(saveMp4Entry));
+        String saveas_key = String.format("%s:" + key + "_transed.mp4", bucket);
+        String avthumbMp4Fop = String.format("avthumb/mp4|saveas/%s", UrlSafeBase64.encodeToString(saveas_key));
 
         //将多个数据处理指令拼接起来
         String persistentOpfs = StringUtils.join(new String[]{avthumbMp4Fop}, ";");
-        //数据处理队列名称，必须
-        String persistentPipeline = "tomp4";
-        //数据处理完成结果通知地址
-        String persistentNotifyUrl = "http://www.nancode.cn/api/qn/notify";
 
-        //...其他参数参考类注释
         //构建持久化数据处理对象
         OperationManager operationManager = new OperationManager(Qiniu.getAuth(), cfg);
         try {
             String persistentId = operationManager.pfop(bucket, key, persistentOpfs, persistentPipeline, persistentNotifyUrl, true);
             //可以根据该 persistentId 查询任务处理进度
             System.out.println(persistentId);
-//            OperationStatus operationStatus = operationManager.prefop(persistentId);
-            //解析 operationStatus 的结果
 
+            //解析 operationStatus 的结果
+            OperationStatus operationStatus = operationManager.prefop(persistentId);
 
         } catch (QiniuException e) {
             System.err.println(e.response.toString());
@@ -116,8 +125,26 @@ public class QnFileController {
 
 
     @PostMapping("/qn/notify")
-    public Result qnback(HttpServletRequest request) {
-        System.out.println(".--.--.--.-成功-.--.---");
-        return null;
+    public void qnback(@RequestBody String param) {
+//        {
+//                "id": "z0.5b2f86d638b9f324a520bbea",
+//                "pipeline": "1381007635.tomp4",
+//                "code": 0,
+//                "desc": "The fop was completed successfully",
+//                "reqid": "pHEAAOYwQgaeFjsV",
+//                "inputBucket": "cdn-block1",
+//                "inputKey": "tttttttt.wmv",
+//                "items": [{
+//                    "cmd": "avthumb/mp4|saveas/Y2RuLWJsb2NrMTphdnRodW1iX3Rlc3RfdGFyZ2V0Lm1wNA==",
+//                    "code": 0,
+//                    "desc": "The fop was completed successfully",
+//                    "hash": "FiavDWmjF7rI7yHQwdyz6PYFCmmT",
+//                    "key": "avthumb_test_target.mp4",
+//                    "returnOld": 0
+//                 }]
+//        }
+        System.out.println("-----------qn/notify-------------");
+        System.out.println(param);
+        StringMap stringMap = Json.decode(param);
     }
 }
