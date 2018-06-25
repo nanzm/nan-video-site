@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+/**
+ * @author sufun
+ */
 @Service
 public class BlogServiceImpl implements BlogService {
 
@@ -56,7 +59,8 @@ public class BlogServiceImpl implements BlogService {
     public void readingIncrease(Long id) {
         Blog blog = blogRepository.findOne(id);
         if (blog != null) {
-            blog.setReadSize(blog.getReadSize() + 1); // 在原有的阅读量基础上递增1
+            // 在原有的阅读量基础上递增1
+            blog.setReadSize(blog.getReadSize() + 1);
             this.saveBlog(blog);
         }
     }

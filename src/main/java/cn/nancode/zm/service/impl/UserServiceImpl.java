@@ -17,10 +17,9 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 
+
 /**
- * User: nan-computer
- * Date: 2018/6/3 19:23
- * Description:
+ * @author sufun
  */
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {

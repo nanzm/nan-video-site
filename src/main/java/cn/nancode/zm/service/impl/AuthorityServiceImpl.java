@@ -6,6 +6,9 @@ import cn.nancode.zm.service.AuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author sufun
+ */
 @Service
 public class AuthorityServiceImpl implements AuthorityService {
 

@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author sufun
+ */
 @Service
 public class VideoServiceImpl implements VideoService {
 

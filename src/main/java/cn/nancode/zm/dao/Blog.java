@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 public class Blog {
 
-    @Id // 主键
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
