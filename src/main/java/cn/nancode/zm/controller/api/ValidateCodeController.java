@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
 /**
- * Created by nan
- * 2018/6/18
+ * @author sufun
  */
 @RestController
 public class ValidateCodeController {
