@@ -19,6 +19,12 @@ public class ResultUtil {
         return success(null);
     }
 
+    public static Result error(String msg) {
+        Result result = new Result();
+        result.setCode(ResultEnum.UNKNOWN.getCode());
+        result.setMsg(msg);
+        return result;
+    }
 
     public static Result error(ResultEnum resultEnum) {
         Result result = new Result();
